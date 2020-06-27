@@ -78,10 +78,10 @@ short solve(short grid[][9], short x, short y)
 	}
 	return 1;
 }
-short main()
+int main(int argc, char *argv[])
 {
 	short grid[9][9];
-	puts("Enter the values in the grid (use 0 for empty cells and digits for non-empty cells):");
+	puts("\nEnter the values in the grid (use 0 for empty cells and digits for non-empty cells):");
 	for(short i=0;i<9;i++)
 	{
 		for(short j=0;j<9;j++)
@@ -91,7 +91,7 @@ short main()
 		}
 	}
 	short res = solve(grid,0,0);
-	printf("The given puzzle is %s\n\n", (res==1?"solvable":"not solvable"));
+	printf("The given puzzle is %s\n\n", (res==1?"SOLVABLE":"UNSOLVABLE"));
 	for(short i=0;i<9;i++)
 	{
 		for(short j=0;j<9;j++)
