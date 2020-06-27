@@ -1,4 +1,5 @@
 /*
+Author: Sai Kiran B
 	the grid is represented as a 2D array.
 	empty cells are represented using -1.
 	non-empty cells are represented using
@@ -47,12 +48,12 @@ struct result getPossibilities(short grid[][9], short x, short y)
 	res.len = index;
 	return res;
 }
-int solve(short grid[][9], int x, int y)
+short solve(short grid[][9], short x, short y)
 {
 	//search for the next empty cell.
-	for(int i=x;i<9;i++)
+	for(short i=x;i<9;i++)
 	{
-		for(int j=y;j<9;j++)
+		for(short j=y;j<9;j++)
 		{
 			if(grid[i][j]==-1)
 			{
@@ -65,7 +66,7 @@ int solve(short grid[][9], int x, int y)
 					return 0;//failure.
 				}
 				//else there are some possibilities so try one and solve the remaining cells.
-				for(int k=0;k<res.len;k++)
+				for(short k=0;k<res.len;k++)
 				{
 					grid[i][j] = res.arr[k];
 					if(solve(grid,x,y)) return 1;
@@ -77,23 +78,23 @@ int solve(short grid[][9], int x, int y)
 	}
 	return 1;
 }
-int main()
+short main()
 {
-	short int grid[9][9];
+	short grid[9][9];
 	puts("Enter the values in the grid (use 0 for empty cells and digits for non-empty cells):");
-	for(int i=0;i<9;i++)
+	for(short i=0;i<9;i++)
 	{
-		for(int j=0;j<9;j++)
+		for(short j=0;j<9;j++)
 		{
 			scanf("%hi", &grid[i][j]);
 			if(grid[i][j] == 0)grid[i][j] = -1;
 		}
 	}
-	int res = solve(grid,0,0);
+	short res = solve(grid,0,0);
 	printf("The given puzzle is %s\n\n", (res==1?"solvable":"not solvable"));
-	for(int i=0;i<9;i++)
+	for(short i=0;i<9;i++)
 	{
-		for(int j=0;j<9;j++)
+		for(short j=0;j<9;j++)
 		{
 			if(j!=0) putchar('|');
 			if(grid[i][j]==-1)putchar(' ');
